@@ -4,23 +4,63 @@
 
 using namespace std;
 
-int soma(int n1, int n2){
-	return n1 + n2;
-}
+struct Calculadora{
+	int n1, n2;
 
+	void entradaNumeros(){
+		cout<<"Primeiro número:"<<endl;
+		cin>>n1;
+		cout<<"Segundo número:"<<endl;
+		cin>>n2;
+	}
 
-int subtracao(int n1, int n2){
+	int soma(){
+		return n1 + n2;
+	}
+	void calcularSoma(){
+		entradaNumeros();
+		cout<<n1<<" + "<<n2<<" = "<<soma()<<endl;
+	}
+
+	int subtracao(){
 	return n1 - n2; 
-}
+	}
+	void calcularSubtracao(){
+		entradaNumeros();
+		cout<<n1<<" - "<<n2<<" = "<<subtracao()<<endl;
 
+	}
 
-int multiplicacao(int n1, int n2){
-	return n1 * n2;
-}
+	int multiplicacao(){
+		return n1 * n2;
+	}
+	void calcularMultiplicacao(){
+		entradaNumeros();
+		cout<<n1<<" * "<<n2<<" = "<<multiplicacao()<<endl;
+	}
 
-float divisao(float n1, float n2){
-	return n1 / n2;
-}
+	float divisao(){
+		return n1 / n2;
+	}
+	void calcularDivisao(){
+		entradaNumeros();
+		if(n2 == 0){
+			cout<<"Erro, denominador igual a zero."<<endl;
+			calcularDivisao();
+			}else{
+				cout<<n1<<" / "<<n2<<" = "<<divisao()<<endl;
+		}
+	}
+
+	int fatorial(int n){
+		int fatorial = 1;
+		for(int i = 1; i <= n; i++){
+			fatorial *= i;
+		}
+		return fatorial;
+	}
+
+};
 
 int fatorial(int n){
 	int fatorial = 1;
@@ -35,6 +75,7 @@ int main(int argc, char** argv) {
 	
 	int n1, n2, operacao, resultado, memoria, historico[10], i;
 	char flag, salvarResultado, limpaHistorico, exibirHistorico;
+	Calculadora calculadora;
 	i = 0;
 	
 	cout<<" \t <Calculadora cientifica>"<<endl;
@@ -43,49 +84,19 @@ int main(int argc, char** argv) {
 		cout<<"Qual operação deseja utilizar?"<<endl;
 		cout<<"(1-Soma, 2-Subtração, 3-Multiplicação, 4-Divisão, 5-Operações avançadas)"<<endl;
 		cin>>operacao;
-		
-		cout<<endl;
-		
+				
 		switch(operacao){
 			case 1:
-				cout<<"Soma."<<endl;
-				cout<<"Primeiro número:"<<endl;
-				cin>>n1;
-				cout<<"Segundo número:"<<endl;
-				cin>>n2;
-				resultado = soma(n1, n2);
-				cout<<n1<<" + "<<n2<<" = "<<resultado<<endl;
+				calculadora.calcularSoma();
 				break;
 			case 2:
-				cout<<"Subtração."<<endl;
-				cout<<"Primeiro número:"<<endl;
-				cin>>n1;
-				cout<<"Segundo número:"<<endl;
-				cin>>n2;
-				resultado = subtracao(n1, n2);
-				cout<<n1<<" - "<<n2<<" = "<<resultado<<endl;
+				calculadora.calcularSubtracao();
 				break;
 			case 3:
-				cout<<"Multiplicação."<<endl;
-				cout<<"Primeiro número:"<<endl;
-				cin>>n1;
-				cout<<"Segundo número:"<<endl;
-				cin>>n2;
-				resultado = multiplicacao(n1, n2);
-				cout<<n1<<" X "<<n2<<" = "<<resultado<<endl;
+				calculadora.calcularMultiplicacao();
 				break;
 			case 4:
-				cout<<"Divisão."<<endl;
-				cout<<"Primeiro número:"<<endl;
-				cin>>n1;
-				cout<<"Segundo número:"<<endl;
-				cin>>n2;
-				resultado = divisao(n1, n2);
-				if(n2 == 0){
-					cout<<"Erro, denominador igual a zero."<<endl;
-				}else{
-					cout<<n1<<" / "<<n2<<" = "<<divisao(n1, n2)<<endl;
-				}
+				calculadora.calcularDivisao();
 				break;				
 			//Operações Avançadas
 			case 5:
@@ -93,9 +104,7 @@ int main(int argc, char** argv) {
 				cout<<"Qual operação avançada deseja utilizar?"<<endl;
 				cout<<"(1-Potência, 2-Raiz quadrada, 3-Fatorial, 4-Seno, 5-Cosseno ou 6-Tangente.)"<<endl;
 				cin>>operacao;
-				
-				cout<<endl;
-				
+								
 				switch(operacao){
 					case 1:
 						cout<<"Potencia."<<endl;
@@ -150,27 +159,12 @@ int main(int argc, char** argv) {
 			
 		}
 	
-		/*//Guarda ultimo resultado na memoria
+		//Guarda ultimo resultado na memoria
 		cout<<"Salvar ultimo resultado?(s/n)"<<endl;
 		cin>>salvarResultado;
 		if(salvarResultado == 's'){
 			memoria = resultado;
 		}
-		
-		//Salva as 10 ultimas operações
-		historico[i] = resultado;
-		i++;
-		if(i >= 10){
-			i=0;
-		}
-		//Exibir ultimas 10 operações
-		cout<<"Exibir histórico?(s/n)"<<endl;
-		cin>>exibirHistorico;
-		if(exibirHistorico == 's'){
-			for(int i = 0; i < 10; i++){
-				cout<<historico[i]<<",";
-			}
-		}*/
 		
 		cout<<"Deseja continuar?(s/n)"<<endl;
 		cin>>flag;
