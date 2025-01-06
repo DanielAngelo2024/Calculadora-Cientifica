@@ -3,29 +3,25 @@
 #include <locale.h>
 
 using namespace std;
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-//Soma
 int soma(int n1, int n2){
 	return n1 + n2;
 }
 
-//Subtração
+
 int subtracao(int n1, int n2){
 	return n1 - n2; 
 }
 
-//Multiplicação
+
 int multiplicacao(int n1, int n2){
 	return n1 * n2;
 }
 
-//Divisão
 float divisao(float n1, float n2){
 	return n1 / n2;
 }
 
-//Fatorial
 int fatorial(int n){
 	int fatorial = 1;
 	for(int i = 1; i <= n; i++){
@@ -34,23 +30,18 @@ int fatorial(int n){
 	return fatorial;
 }
 
-
 int main(int argc, char** argv) {
-	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "pt-BR.UTF-8");
 	
 	int n1, n2, operacao, resultado, memoria, historico[10], i;
 	char flag, salvarResultado, limpaHistorico, exibirHistorico;
 	i = 0;
 	
-	for (int i = 0; i<10; i++){
-		historico[i] = 0;
-	}
-	
 	cout<<" \t <Calculadora cientifica>"<<endl;
 	do{
 		
-		cout<<"Qual operação deseja utilizar?"<<endl;
-		cout<<"(1-Soma, 2-Subtração, 3-Multiplicação, 4-Divisão, 5-Operações avançadas)"<<endl;
+		cout<<"Qual operaÃ§Ã£o deseja utilizar?"<<endl;
+		cout<<"(1-Soma, 2-SubtraÃ§Ã£o, 3-MultiplicaÃ§Ã£o, 4-DivisÃ£o, 5-OperaÃ§Ãµes avanÃ§adas)"<<endl;
 		cin>>operacao;
 		
 		cout<<endl;
@@ -58,36 +49,36 @@ int main(int argc, char** argv) {
 		switch(operacao){
 			case 1:
 				cout<<"Soma."<<endl;
-				cout<<"Primeiro número:"<<endl;
+				cout<<"Primeiro nÃºmero:"<<endl;
 				cin>>n1;
-				cout<<"Segundo número:"<<endl;
+				cout<<"Segundo nÃºmero:"<<endl;
 				cin>>n2;
 				resultado = soma(n1, n2);
 				cout<<n1<<" + "<<n2<<" = "<<resultado<<endl;
 				break;
 			case 2:
-				cout<<"Subtração."<<endl;
-				cout<<"Primeiro número:"<<endl;
+				cout<<"SubtraÃ§Ã£o."<<endl;
+				cout<<"Primeiro nÃºmero:"<<endl;
 				cin>>n1;
-				cout<<"Segundo número:"<<endl;
+				cout<<"Segundo nÃºmero:"<<endl;
 				cin>>n2;
 				resultado = subtracao(n1, n2);
 				cout<<n1<<" - "<<n2<<" = "<<resultado<<endl;
 				break;
 			case 3:
-				cout<<"Multiplicação."<<endl;
-				cout<<"Primeiro número:"<<endl;
+				cout<<"MultiplicaÃ§Ã£o."<<endl;
+				cout<<"Primeiro nÃºmero:"<<endl;
 				cin>>n1;
-				cout<<"Segundo número:"<<endl;
+				cout<<"Segundo nÃºmero:"<<endl;
 				cin>>n2;
 				resultado = multiplicacao(n1, n2);
 				cout<<n1<<" X "<<n2<<" = "<<resultado<<endl;
 				break;
 			case 4:
-				cout<<"Divisão."<<endl;
-				cout<<"Primeiro número:"<<endl;
+				cout<<"DivisÃ£o."<<endl;
+				cout<<"Primeiro nÃºmero:"<<endl;
 				cin>>n1;
-				cout<<"Segundo número:"<<endl;
+				cout<<"Segundo nÃºmero:"<<endl;
 				cin>>n2;
 				resultado = divisao(n1, n2);
 				if(n2 == 0){
@@ -96,11 +87,11 @@ int main(int argc, char** argv) {
 					cout<<n1<<" / "<<n2<<" = "<<divisao(n1, n2)<<endl;
 				}
 				break;				
-			//Operações Avançadas
+			//OperaÃ§Ãµes AvanÃ§adas
 			case 5:
-				cout<<"Operações avançadas:"<<endl;
-				cout<<"Qual operação avançada deseja utilizar?"<<endl;
-				cout<<"(1-Potência, 2-Raiz quadrada, 3-Fatorial, 4-Seno, 5-Cosseno ou 6-Tangente.)"<<endl;
+				cout<<"OperaÃ§Ãµes avanÃ§adas:"<<endl;
+				cout<<"Qual operaÃ§Ã£o avanÃ§ada deseja utilizar?"<<endl;
+				cout<<"(1-PotÃªncia, 2-Raiz quadrada, 3-Fatorial, 4-Seno, 5-Cosseno ou 6-Tangente.)"<<endl;
 				cin>>operacao;
 				
 				cout<<endl;
@@ -108,9 +99,9 @@ int main(int argc, char** argv) {
 				switch(operacao){
 					case 1:
 						cout<<"Potencia."<<endl;
-						cout<<"Número base:"<<endl;
+						cout<<"NÃºmero base:"<<endl;
 						cin>>n1;
-						cout<<"Número expoente:"<<endl;
+						cout<<"NÃºmero expoente:"<<endl;
 						cin>>n2;
 						resultado = pow(n1, n2);
 						cout<<n1<<" elevado a "<<n2<<" = "<<resultado<<endl;
@@ -124,62 +115,62 @@ int main(int argc, char** argv) {
 						break;
 					case 3:
 						cout<<"Fatorial."<<endl;
-						cout<<"Digite um número:"<<endl;
+						cout<<"Digite um nÃºmero:"<<endl;
 						cin>>n1;
 						resultado = fatorial(n1);
-						cout<<"O fatorial de "<<n1<<" é "<<resultado<<endl;
+						cout<<"O fatorial de "<<n1<<" Ã© "<<resultado<<endl;
 						break;
 					case 4:
 						cout<<"Seno"<<endl;
-						cout<<"Digite um número em radiano:"<<endl;
+						cout<<"Digite um nÃºmero em radiano:"<<endl;
 						cin>>n1;
 						resultado = sin(n1);
-						cout<<"O seno é: "<<resultado<<endl;
+						cout<<"O seno Ã©: "<<resultado<<endl;
 						break;	
 					case 5:
 						cout<<"Cosseno."<<endl;
-						cout<<"Digite um número em radiano:"<<endl;
+						cout<<"Digite um nÃºmero em radiano:"<<endl;
 						cin>>n1;
 						resultado = cos(n1);
-						cout<<"O cosseno de "<<n1<<" é "<<resultado<<endl;
+						cout<<"O cosseno de "<<n1<<" Ã© "<<resultado<<endl;
 						break;
 					case 6:
 						cout<<"Tangente."<<endl;
-						cout<<"Digite um número em radiano:"<<endl;
+						cout<<"Digite um nÃºmero em radiano:"<<endl;
 						cin>>n1;
 						resultado = tan(n1);
-						cout<<"A tangente de "<<n1<<" é "<<resultado<<endl;
+						cout<<"A tangente de "<<n1<<" Ã© "<<resultado<<endl;
 						break;
 					default:
-						cout<<"Operação avançada inválida!"<<endl;
+						cout<<"OperaÃ§Ã£o avanÃ§ada invÃ¡lida!"<<endl;
 				}
 				break;
 			default:
-				cout<<"Operação inválida!"<<endl;
+				cout<<"OperaÃ§Ã£o invÃ¡lida!"<<endl;
 			
 		}
 	
-		//Guarda ultimo resultado na memoria
+		/*//Guarda ultimo resultado na memoria
 		cout<<"Salvar ultimo resultado?(s/n)"<<endl;
 		cin>>salvarResultado;
 		if(salvarResultado == 's'){
 			memoria = resultado;
 		}
 		
-		//Salva as 10 ultimas operações
+		//Salva as 10 ultimas operaÃ§Ãµes
 		historico[i] = resultado;
 		i++;
 		if(i >= 10){
 			i=0;
 		}
-		//Exibir ultimas 10 operações
-		cout<<"Exibir histórico?(s/n)"<<endl;
+		//Exibir ultimas 10 operaÃ§Ãµes
+		cout<<"Exibir histÃ³rico?(s/n)"<<endl;
 		cin>>exibirHistorico;
 		if(exibirHistorico == 's'){
 			for(int i = 0; i < 10; i++){
 				cout<<historico[i]<<",";
 			}
-		}
+		}*/
 		
 		cout<<"Deseja continuar?(s/n)"<<endl;
 		cin>>flag;
