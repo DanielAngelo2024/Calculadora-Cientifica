@@ -18,6 +18,7 @@ struct Calculadora{
 		return n1 + n2;
 	}
 	void calcularSoma(){
+		cout<<"Soma:"<<endl;
 		entradaNumeros();
 		cout<<n1<<" + "<<n2<<" = "<<soma()<<endl;
 	}
@@ -26,15 +27,16 @@ struct Calculadora{
 	return n1 - n2; 
 	}
 	void calcularSubtracao(){
+		cout<<"Subtração: "<<endl;
 		entradaNumeros();
 		cout<<n1<<" - "<<n2<<" = "<<subtracao()<<endl;
-
 	}
 
 	int multiplicacao(){
 		return n1 * n2;
 	}
 	void calcularMultiplicacao(){
+		cout<<"Multiplicação:"<<endl;
 		entradaNumeros();
 		cout<<n1<<" * "<<n2<<" = "<<multiplicacao()<<endl;
 	}
@@ -43,6 +45,7 @@ struct Calculadora{
 		return n1 / n2;
 	}
 	void calcularDivisao(){
+		cout<<"Divisão:"<<endl;
 		entradaNumeros();
 		if(n2 == 0){
 			cout<<"Erro, denominador igual a zero."<<endl;
@@ -51,29 +54,66 @@ struct Calculadora{
 				cout<<n1<<" / "<<n2<<" = "<<divisao()<<endl;
 		}
 	}
+	
+	//Operações Avançadas
 
-	int fatorial(int n){
+	void calcularPotencia(){
+		cout<<"Potencia."<<endl;
+		cout<<"Número base:"<<endl;
+		cin>>n1;
+		cout<<"Número expoente:"<<endl;
+		cin>>n2;
+		cout<<n1<<" elevado a "<<n2<<" = "<<pow(n1,n2)<<endl;
+	}
+
+	void calcularRaizQuadrada(){
+		cout<<"Raiz quadrada."<<endl;
+		cout<<"Radicando:"<<endl;
+		cin>>n1;
+		
+		cout<<"Raiz: "<<sqrt(n1)<<endl;
+	}
+
+	int fatorial(){
 		int fatorial = 1;
-		for(int i = 1; i <= n; i++){
+		for(int i = 1; i <= n1; i++){
 			fatorial *= i;
 		}
 		return fatorial;
 	}
-
-};
-
-int fatorial(int n){
-	int fatorial = 1;
-	for(int i = 1; i <= n; i++){
-		fatorial *= i;
+	void calcularFatorial(){
+		cout<<"Fatorial."<<endl;
+		cout<<"Digite um número:"<<endl;
+		cin>>n1;
+		cout<<"O fatorial de "<<n1<<" é "<<fatorial()<<endl;
 	}
-	return fatorial;
-}
+
+	void calcularSeno(){
+		cout<<"Seno"<<endl;
+		cout<<"Digite um número em radiano:"<<endl;
+		cin>>n1;
+		cout<<"O seno é: "<<sin(n1)<<endl;
+	}
+
+	void calcularCosseno(){
+		cout<<"Cosseno."<<endl;
+		cout<<"Digite um número em radiano:"<<endl;
+		cin>>n1;
+		cout<<"O cosseno de "<<n1<<" é "<<cos(n1)<<endl;
+	}
+
+	void calcularTangente(){
+		cout<<"Tangente."<<endl;
+		cout<<"Digite um número em radiano:"<<endl;
+		cin>>n1;
+		cout<<"A tangente de "<<n1<<" é "<<tan(n1)<<endl;
+	}
+};
 
 int main(int argc, char** argv) {
 	setlocale(LC_ALL, "pt-BR.UTF-8");
 	
-	int n1, n2, operacao, resultado, memoria, historico[10], i;
+	int operacao, i;
 	char flag, salvarResultado, limpaHistorico, exibirHistorico;
 	Calculadora calculadora;
 	i = 0;
@@ -107,48 +147,22 @@ int main(int argc, char** argv) {
 								
 				switch(operacao){
 					case 1:
-						cout<<"Potencia."<<endl;
-						cout<<"Número base:"<<endl;
-						cin>>n1;
-						cout<<"Número expoente:"<<endl;
-						cin>>n2;
-						resultado = pow(n1, n2);
-						cout<<n1<<" elevado a "<<n2<<" = "<<resultado<<endl;
+						calculadora.calcularPotencia();
 						break;
 					case 2:
-						cout<<"Raiz quadrada."<<endl;
-						cout<<"Radicando:"<<endl;
-						cin>>n1;
-						resultado = sqrt(n1);
-						cout<<"Raiz: "<<resultado<<endl;
+						calculadora.calcularRaizQuadrada();
 						break;
 					case 3:
-						cout<<"Fatorial."<<endl;
-						cout<<"Digite um número:"<<endl;
-						cin>>n1;
-						resultado = fatorial(n1);
-						cout<<"O fatorial de "<<n1<<" é "<<resultado<<endl;
+						calculadora.calcularFatorial();
 						break;
 					case 4:
-						cout<<"Seno"<<endl;
-						cout<<"Digite um número em radiano:"<<endl;
-						cin>>n1;
-						resultado = sin(n1);
-						cout<<"O seno é: "<<resultado<<endl;
+						calculadora.calcularSeno();
 						break;	
 					case 5:
-						cout<<"Cosseno."<<endl;
-						cout<<"Digite um número em radiano:"<<endl;
-						cin>>n1;
-						resultado = cos(n1);
-						cout<<"O cosseno de "<<n1<<" é "<<resultado<<endl;
+						calculadora.calcularCosseno();
 						break;
 					case 6:
-						cout<<"Tangente."<<endl;
-						cout<<"Digite um número em radiano:"<<endl;
-						cin>>n1;
-						resultado = tan(n1);
-						cout<<"A tangente de "<<n1<<" é "<<resultado<<endl;
+						calculadora.calcularTangente();
 						break;
 					default:
 						cout<<"Operação avançada inválida!"<<endl;
@@ -158,14 +172,7 @@ int main(int argc, char** argv) {
 				cout<<"Operação inválida!"<<endl;
 			
 		}
-	
-		//Guarda ultimo resultado na memoria
-		cout<<"Salvar ultimo resultado?(s/n)"<<endl;
-		cin>>salvarResultado;
-		if(salvarResultado == 's'){
-			memoria = resultado;
-		}
-		
+
 		cout<<"Deseja continuar?(s/n)"<<endl;
 		cin>>flag;
 		if(flag != 's'){
