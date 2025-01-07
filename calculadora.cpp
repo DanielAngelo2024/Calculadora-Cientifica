@@ -5,13 +5,22 @@
 using namespace std;
 
 struct Calculadora{
-	int n1, n2;
-
+	int n1, n2, resultado, ultimoResultadoSalvo;
+	
 	void entradaNumeros(){
 		cout<<"Primeiro número:"<<endl;
 		cin>>n1;
 		cout<<"Segundo número:"<<endl;
 		cin>>n2;
+	}
+
+	void salvarResultado(){
+		char opcao;
+		cout<<"Deseja salvar resultado?"<<endl;
+		cin>>opcao;
+		if(opcao == 's'){
+			ultimoResultadoSalvo = resultado;
+		}
 	}
 
 	int soma(){
@@ -20,7 +29,8 @@ struct Calculadora{
 	void calcularSoma(){
 		cout<<"Soma:"<<endl;
 		entradaNumeros();
-		cout<<n1<<" + "<<n2<<" = "<<soma()<<endl;
+		resultado = soma();
+		cout<<n1<<" + "<<n2<<" = "<<resultado<<endl;
 	}
 
 	int subtracao(){
@@ -29,7 +39,8 @@ struct Calculadora{
 	void calcularSubtracao(){
 		cout<<"Subtração: "<<endl;
 		entradaNumeros();
-		cout<<n1<<" - "<<n2<<" = "<<subtracao()<<endl;
+		resultado = subtracao();
+		cout<<n1<<" - "<<n2<<" = "<<resultado<<endl;
 	}
 
 	int multiplicacao(){
@@ -110,19 +121,22 @@ struct Calculadora{
 	}
 };
 
+
+
 int main(int argc, char** argv) {
 	setlocale(LC_ALL, "pt-BR.UTF-8");
 	
-	int operacao, i;
-	char flag, salvarResultado, limpaHistorico, exibirHistorico;
+	int operacao;
+	char flag;
 	Calculadora calculadora;
-	i = 0;
-	
+
 	cout<<" \t <Calculadora cientifica>"<<endl;
+	
 	do{
 		
 		cout<<"Qual operação deseja utilizar?"<<endl;
 		cout<<"(1-Soma, 2-Subtração, 3-Multiplicação, 4-Divisão, 5-Operações avançadas)"<<endl;
+		
 		cin>>operacao;
 				
 		switch(operacao){
@@ -172,6 +186,8 @@ int main(int argc, char** argv) {
 				cout<<"Operação inválida!"<<endl;
 			
 		}
+
+		calculadora.salvarResultado();
 
 		cout<<"Deseja continuar?(s/n)"<<endl;
 		cin>>flag;
