@@ -45,6 +45,7 @@ struct Calculadora{
 		entradaNumeros();
 		resultado = subtracao();
 		cout<<n1<<" - "<<n2<<" = "<<resultado<<endl;
+		salvarResultado();
 		operacao = " - ";
 	}
 
@@ -55,6 +56,7 @@ struct Calculadora{
 		cout<<"Multiplicação:"<<endl;
 		entradaNumeros();
 		cout<<n1<<" * "<<n2<<" = "<<multiplicacao()<<endl;
+		salvarResultado();
 		operacao = " x ";
 	}
 
@@ -70,6 +72,7 @@ struct Calculadora{
 			}else{
 				cout<<n1<<" / "<<n2<<" = "<<divisao()<<endl;
 				}
+		salvarResultado();
 		operacao = " / ";
 	}
 	
@@ -82,6 +85,7 @@ struct Calculadora{
 		cout<<"Número expoente:"<<endl;
 		cin>>n2;
 		cout<<n1<<" elevado a "<<n2<<" = "<<pow(n1,n2)<<endl;
+		salvarResultado();
 		operacao = " ^ ";
 	}
 
@@ -91,6 +95,7 @@ struct Calculadora{
 		cin>>n2;
 		resultado = sqrt(n2);
 		cout<<"Raiz: "<<resultado<<endl;
+		salvarResultado();
 		operacao = "Raiz ";
 		n1 = NULL;
 	}
@@ -108,6 +113,7 @@ struct Calculadora{
 		cin>>n2;
 		resultado = fatorial();
 		cout<<"O fatorial de "<<n2<<" é "<<resultado<<endl;
+		salvarResultado();
 		operacao = "Fatorial ";
 		n1 = NULL;
 	}
@@ -118,6 +124,7 @@ struct Calculadora{
 		cin>>n2;
 		resultado = sin(n2);
 		cout<<"O seno de "<<n2<<" é: "<<resultado<<endl;
+		salvarResultado();
 		operacao = "Seno ";
 		n1 = NULL;
 	}
@@ -128,6 +135,7 @@ struct Calculadora{
 		cin>>n2;
 		resultado = cos(n2);
 		cout<<"O cosseno de "<<n2<<" é "<<resultado<<endl;
+		salvarResultado();
 		operacao = "Cosseno ";
 		n1 = NULL;
 	}
@@ -138,6 +146,7 @@ struct Calculadora{
 		cin>>n2;
 		resultado = tan(n2);
 		cout<<"A tangente de "<<n2<<" é "<<resultado<<endl;
+		salvarResultado();
 		operacao = "Tangente ";
 		n1 = NULL;
 	}
@@ -147,11 +156,17 @@ struct Historico {
 	Calculadora historicoCalculadora[10];
 	int i = 0;
 
+	void resetarContador() {
+		if (i >= 10)
+		{
+			i = 0;
+		}
+		
+	}
+	
 	void registrar(Calculadora calculadora) {
-		historicoCalculadora[i].n1 = calculadora.n1;
-		historicoCalculadora[i].operacao = calculadora.operacao;
-		historicoCalculadora[i].n2 = calculadora.n2;
-		historicoCalculadora[i].resultado = calculadora.resultado;
+		resetarContador();
+		historicoCalculadora[i] = calculadora;
 		i++;
 	}
 
@@ -250,6 +265,7 @@ int main(int argc, char** argv) {
 		cin>>flag;
 		if(flag != 's'){
 			cout<<"Programa encerrado!";
+			historico.exibir();
 		}
 	}while(flag == 's');
 	
