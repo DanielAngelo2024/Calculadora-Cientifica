@@ -1,2 +1,2 @@
 # Calculadora-Cientifica
-Calculadora Cientifica feito no C++
+Calculadora Cientifica feito no C++ feito como desafio pelo meu professor no final do segundo período da faculdade, aplicando conceitos básicos de algoritmos e structs com um sistema de histórico de das ultimas 10 operações
