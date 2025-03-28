@@ -187,10 +187,10 @@ struct Historico {
 int main(int argc, char** argv) {
 	setlocale(LC_ALL, "pt-BR.UTF-8");
 	
-	int operacao;
-	char flag;
-	Calculadora calculadora;
-	Historico historico;
+	int* operacao = new int;
+	char* flag = new char;
+	Calculadora* calculadora = new Calculadora;
+	Historico* historico = new Historico;
 	cout<<" \t <Calculadora cientifica>"<<endl;
 	
 	do{
@@ -198,59 +198,59 @@ int main(int argc, char** argv) {
 		cout<<"Qual operação deseja utilizar?"<<endl;
 		cout<<"(1-Soma, 2-Subtração, 3-Multiplicação, 4-Divisão, 6-Operações avançadas, 5 - Historico)"<<endl;
 		
-		cin>>operacao;
+		cin>>*operacao;
 				
-		switch(operacao){
+		switch(*operacao){
 			case 1:
-				calculadora.calcularSoma();
-				historico.registrar(calculadora);
+				calculadora->calcularSoma();
+				historico->registrar(*calculadora);
 				break;
 			case 2:
-				calculadora.calcularSubtracao();
-				historico.registrar(calculadora);
+				calculadora->calcularSubtracao();
+				historico->registrar(*calculadora);
 				break;
 			case 3:
-				calculadora.calcularMultiplicacao();
-				historico.registrar(calculadora);
+				calculadora->calcularMultiplicacao();
+				historico->registrar(*calculadora);
 				break;
 			case 4:
-				calculadora.calcularDivisao();
-				historico.registrar(calculadora);
+				calculadora->calcularDivisao();
+				historico->registrar(*calculadora);
 				break;
 			case 5:
-				historico.exibir();
+				historico->exibir();
 				break;	
 			//Operações Avançadas
 			case 6:
 				cout<<"Operações avançadas:"<<endl;
 				cout<<"Qual operação avançada deseja utilizar?"<<endl;
 				cout<<"(1-Potência, 2-Raiz quadrada, 3-Fatorial, 4-Seno, 5-Cosseno ou 6-Tangente.)"<<endl;
-				cin>>operacao;
+				cin>>*operacao;
 								
-				switch(operacao){
+				switch(*operacao){
 					case 1:
-						calculadora.calcularPotencia();
-						historico.registrar(calculadora);
+						calculadora->calcularPotencia();
+						historico->registrar(*calculadora);
 						break;
 					case 2:
-						calculadora.calcularRaizQuadrada();
-						historico.registrar(calculadora);
+						calculadora->calcularRaizQuadrada();
+						historico->registrar(*calculadora);
 						break;
 					case 3:
-						calculadora.calcularFatorial();
-						historico.registrar(calculadora);
+						calculadora->calcularFatorial();
+						historico->registrar(*calculadora);
 						break;
 					case 4:
-						calculadora.calcularSeno();
-						historico.registrar(calculadora);
+						calculadora->calcularSeno();
+						historico->registrar(*calculadora);
 						break;	
 					case 5:
-						calculadora.calcularCosseno();
-						historico.registrar(calculadora);
+						calculadora->calcularCosseno();
+						historico->registrar(*calculadora);
 						break;
 					case 6:
-						calculadora.calcularTangente();
-						historico.registrar(calculadora);
+						calculadora->calcularTangente();
+						historico->registrar(*calculadora);
 						break;
 					default:
 						cout<<"Operação avançada inválida!"<<endl;
@@ -263,11 +263,11 @@ int main(int argc, char** argv) {
 
 		cout<<"Deseja continuar?(s/n)"<<endl;
 		cin>>flag;
-		if(flag != 's'){
+		if(*flag != 's'){
 			cout<<"Programa encerrado!";
-			historico.exibir();
+			historico->exibir();
 		}
-	}while(flag == 's');
+	}while(*flag == 's');
 	
 	return 0;
 }
