@@ -180,6 +180,7 @@ struct Historico {
 				
 			}
 		}
+	
 };
 
 
@@ -191,6 +192,7 @@ int main(int argc, char** argv) {
 	char* flag = new char;
 	Calculadora* calculadora = new Calculadora;
 	Historico* historico = new Historico;
+	
 	cout<<" \t <Calculadora cientifica>"<<endl;
 	
 	do{
@@ -268,6 +270,11 @@ int main(int argc, char** argv) {
 			historico->exibir();
 		}
 	}while(*flag == 's');
+
+	delete calculadora;
+	delete historico;
+	delete flag;
+	delete operacao;
 	
 	return 0;
 }
