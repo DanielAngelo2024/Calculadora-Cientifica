@@ -16,6 +16,10 @@
 
 :bulb: Atualização 2: Alocação de memória.
 
+:bulb: Atualização 3: Protótipo de função.
+
+:bulb: Atualização 4: Criação de arquivos
+
 -------------------------------------------------------------------------------------------------------------------------------------
 
 :us:
@@ -33,3 +37,7 @@
 :bulb: Update 1: Pointers.
 
 :bulb: Update 2: Memory allocation.
+
+:bulb: Update 3: Function prototypes.
+
+:bulb: Update 4: Input Stream files
