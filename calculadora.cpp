@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <locale.h>
+#include <fstream>
 
 using namespace std;
 
@@ -183,7 +184,7 @@ struct Historico {
 	
 };
 
-
+void arquivarResultado(Calculadora *calculadora, ofstream &entrada);
 
 int main(int argc, char** argv) {
 	setlocale(LC_ALL, "pt-BR.UTF-8");
@@ -192,7 +193,10 @@ int main(int argc, char** argv) {
 	char* flag = new char;
 	Calculadora* calculadora = new Calculadora;
 	Historico* historico = new Historico;
-	
+	ofstream entrada;
+	entrada.open("operacoes.txt");
+
+
 	cout<<" \t <Calculadora cientifica>"<<endl;
 	
 	do{
@@ -206,18 +210,22 @@ int main(int argc, char** argv) {
 			case 1:
 				calculadora->calcularSoma();
 				historico->registrar(*calculadora);
+				arquivarResultado(calculadora, entrada);
 				break;
 			case 2:
 				calculadora->calcularSubtracao();
 				historico->registrar(*calculadora);
+				arquivarResultado(calculadora, entrada);
 				break;
 			case 3:
 				calculadora->calcularMultiplicacao();
 				historico->registrar(*calculadora);
+				arquivarResultado(calculadora, entrada);
 				break;
 			case 4:
 				calculadora->calcularDivisao();
 				historico->registrar(*calculadora);
+				arquivarResultado(calculadora, entrada);
 				break;
 			case 5:
 				historico->exibir();
@@ -233,26 +241,32 @@ int main(int argc, char** argv) {
 					case 1:
 						calculadora->calcularPotencia();
 						historico->registrar(*calculadora);
+						arquivarResultado(calculadora, entrada);
 						break;
 					case 2:
 						calculadora->calcularRaizQuadrada();
 						historico->registrar(*calculadora);
+						arquivarResultado(calculadora, entrada);
 						break;
 					case 3:
 						calculadora->calcularFatorial();
 						historico->registrar(*calculadora);
+						arquivarResultado(calculadora, entrada);
 						break;
 					case 4:
 						calculadora->calcularSeno();
 						historico->registrar(*calculadora);
+						arquivarResultado(calculadora, entrada);
 						break;	
 					case 5:
 						calculadora->calcularCosseno();
 						historico->registrar(*calculadora);
+						arquivarResultado(calculadora, entrada);
 						break;
 					case 6:
 						calculadora->calcularTangente();
 						historico->registrar(*calculadora);
+						arquivarResultado(calculadora, entrada);
 						break;
 					default:
 						cout<<"Operação avançada inválida!"<<endl;
@@ -275,6 +289,10 @@ int main(int argc, char** argv) {
 	delete historico;
 	delete flag;
 	delete operacao;
-	
+	entrada.close();
 	return 0;
+}
+
+void arquivarResultado(Calculadora *calculadora, ofstream &entrada){
+	entrada << calculadora->n1 << calculadora->operacao << calculadora->n2 << " = " << calculadora->resultado << "\n";
 }
