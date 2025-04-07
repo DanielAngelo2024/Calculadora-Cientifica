@@ -196,7 +196,7 @@ int main(int argc, char** argv) {
 	ofstream entrada;
 	entrada.open("operacoes.txt");
 	ifstream leitura;
-
+	
 	cout<<" \t <Calculadora cientifica>"<<endl;
 	
 	do{
