@@ -195,7 +195,7 @@ int main(int argc, char** argv) {
 	Historico* historico = new Historico;
 	ofstream entrada;
 	entrada.open("operacoes.txt");
-
+	ifstream leitura;
 
 	cout<<" \t <Calculadora cientifica>"<<endl;
 	
@@ -229,6 +229,7 @@ int main(int argc, char** argv) {
 				break;
 			case 5:
 				historico->exibir();
+				
 				break;	
 			//Operações Avançadas
 			case 6:
@@ -294,5 +295,12 @@ int main(int argc, char** argv) {
 }
 
 void arquivarResultado(Calculadora *calculadora, ofstream &entrada){
-	entrada << calculadora->n1 << calculadora->operacao << calculadora->n2 << " = " << calculadora->resultado << "\n";
+	if (calculadora->n1 == NULL)
+	{
+		entrada << calculadora->operacao << calculadora->n2 << " = " << calculadora->resultado << "\n";
+
+	} else {
+		entrada << calculadora->n1 << calculadora->operacao << calculadora->n2 << " = " << calculadora->resultado << "\n";
+	}
+	
 }
