@@ -285,12 +285,12 @@ int main(int argc, char** argv) {
 			historico->exibir();
 		}
 	}while(*flag == 's');
-
+	
+	entrada.close();
 	delete calculadora;
 	delete historico;
 	delete flag;
 	delete operacao;
-	entrada.close();
 	return 0;
 }
 
