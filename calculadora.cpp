@@ -6,15 +6,15 @@
 using namespace std;
 
 struct Calculadora{
-	float n1, n2, ultimoResultadoSalvo, resultado;
+	float valor1, valor2, ultimoResultadoSalvo, resultado;
 	int i = 0;
 	string operacao;
 	
 	void entradaNumeros(){
 		cout<<"Primeiro número:"<<endl;
-		cin>>n1;
+		cin>> valor1;
 		cout<<"Segundo número:"<<endl;
-		cin>>n2;
+		cin>>valor2;
 	}
 
 	void salvarResultado(){
@@ -27,51 +27,53 @@ struct Calculadora{
 	}
 
 	int soma(){
-		return n1 + n2;
+		return valor1 + valor2;
 	}
 	void calcularSoma(){
 		cout<<"Soma:"<<endl;
 		entradaNumeros();
 		resultado = soma();
-		cout<<n1<<" + "<<n2<<" = "<<resultado<<endl;
+		cout<<valor1<<" + "<<valor2<<" = "<<resultado<<endl;
 		salvarResultado();
 		operacao = " + ";
 	}
 
 	int subtracao(){
-	return n1 - n2; 
+	return valor1 - valor2; 
 	}
 	void calcularSubtracao(){
 		cout<<"Subtração: "<<endl;
 		entradaNumeros();
 		resultado = subtracao();
-		cout<<n1<<" - "<<n2<<" = "<<resultado<<endl;
+		cout<<valor1<<" - "<<valor2<<" = "<<resultado<<endl;
 		salvarResultado();
 		operacao = " - ";
 	}
 
 	int multiplicacao(){
-		return n1 * n2;
+		return valor1 * valor2;
 	}
 	void calcularMultiplicacao(){
 		cout<<"Multiplicação:"<<endl;
 		entradaNumeros();
-		cout<<n1<<" * "<<n2<<" = "<<multiplicacao()<<endl;
+		resultado = multiplicacao();
+		cout<<valor1<<" * "<<valor2<<" = "<<resultado<<endl;
 		salvarResultado();
 		operacao = " x ";
 	}
 
 	float divisao(){
-		return n1 / n2;
+		return valor1 / valor2;
 	}
 	void calcularDivisao(){
 		cout<<"Divisão:"<<endl;
 		entradaNumeros();
-		if(n2 == 0){
+		if(valor2 == 0){
 			cout<<"Erro, denominador igual a zero."<<endl;
 			calcularDivisao();
 			}else{
-				cout<<n1<<" / "<<n2<<" = "<<divisao()<<endl;
+				resultado = divisao();
+				cout<<valor1<<" / "<<valor2<<" = "<<resultado<<endl;
 				}
 		salvarResultado();
 		operacao = " / ";
@@ -82,10 +84,11 @@ struct Calculadora{
 	void calcularPotencia(){
 		cout<<"Potencia."<<endl;
 		cout<<"Número base:"<<endl;
-		cin>>n1;
+		cin>>valor1;
 		cout<<"Número expoente:"<<endl;
-		cin>>n2;
-		cout<<n1<<" elevado a "<<n2<<" = "<<pow(n1,n2)<<endl;
+		cin>>valor2;
+		resultado = pow(valor1, valor2);
+		cout<<valor1<<" elevado a "<<valor2<<" = "<<resultado<<endl;
 		salvarResultado();
 		operacao = " ^ ";
 	}
@@ -93,17 +96,17 @@ struct Calculadora{
 	void calcularRaizQuadrada(){
 		cout<<"Raiz quadrada."<<endl;
 		cout<<"Radicando:"<<endl;
-		cin>>n2;
-		resultado = sqrt(n2);
+		cin>>valor2;
+		resultado = sqrt(valor2);
 		cout<<"Raiz: "<<resultado<<endl;
 		salvarResultado();
 		operacao = "Raiz ";
-		n1 = NULL;
+		valor1 = NULL;
 	}
 
 	int fatorial(){
 		int fatorial = 1;
-		for(int i = 1; i <= n2; i++){
+		for(int i = 1; i <= valor2; i++){
 			fatorial *= i;
 		}
 		return fatorial;
@@ -111,45 +114,45 @@ struct Calculadora{
 	void calcularFatorial(){
 		cout<<"Fatorial."<<endl;
 		cout<<"Digite um número:"<<endl;
-		cin>>n2;
+		cin>>valor2;
 		resultado = fatorial();
-		cout<<"O fatorial de "<<n2<<" é "<<resultado<<endl;
+		cout<<"O fatorial de "<<valor2<<" é "<<resultado<<endl;
 		salvarResultado();
 		operacao = "Fatorial ";
-		n1 = NULL;
+		valor1 = NULL;
 	}
 
 	void calcularSeno(){
 		cout<<"Seno"<<endl;
 		cout<<"Digite um número em radiano:"<<endl;
-		cin>>n2;
-		resultado = sin(n2);
-		cout<<"O seno de "<<n2<<" é: "<<resultado<<endl;
+		cin>>valor2;
+		resultado = sin(valor2);
+		cout<<"O seno de "<<valor2<<" é: "<<resultado<<endl;
 		salvarResultado();
 		operacao = "Seno ";
-		n1 = NULL;
+		valor1 = NULL;
 	}
 
 	void calcularCosseno(){
 		cout<<"Cosseno."<<endl;
 		cout<<"Digite um número em radiano:"<<endl;
-		cin>>n2;
-		resultado = cos(n2);
-		cout<<"O cosseno de "<<n2<<" é "<<resultado<<endl;
+		cin>>valor2;
+		resultado = cos(valor2);
+		cout<<"O cosseno de "<<valor2<<" é "<<resultado<<endl;
 		salvarResultado();
 		operacao = "Cosseno ";
-		n1 = NULL;
+		valor1 = NULL;
 	}
 
 	void calcularTangente(){
 		cout<<"Tangente."<<endl;
 		cout<<"Digite um número em radiano:"<<endl;
-		cin>>n2;
-		resultado = tan(n2);
-		cout<<"A tangente de "<<n2<<" é "<<resultado<<endl;
+		cin>>valor2;
+		resultado = tan(valor2);
+		cout<<"A tangente de "<<valor2<<" é "<<resultado<<endl;
 		salvarResultado();
 		operacao = "Tangente ";
-		n1 = NULL;
+		valor1 = NULL;
 	}
 };
 
@@ -173,10 +176,10 @@ struct Historico {
 
 	void exibir() {
 			for (int i = 0; i < 10; i++) {
-				if (historicoCalculadora[i].n1 == NULL){
-					cout<<historicoCalculadora[i].operacao<<historicoCalculadora[i].n2<<" = "<<historicoCalculadora[i].resultado<<endl;
+				if (historicoCalculadora[i].valor1 == NULL){
+					cout<<historicoCalculadora[i].operacao<<historicoCalculadora[i].valor2<<" = "<<historicoCalculadora[i].resultado<<endl;
 				} else {
-					cout<<historicoCalculadora[i].n1<<historicoCalculadora[i].operacao<<historicoCalculadora[i].n2<<" = "<< historicoCalculadora[i].resultado<<endl;
+					cout<<historicoCalculadora[i].valor1<<historicoCalculadora[i].operacao<<historicoCalculadora[i].valor2<<" = "<< historicoCalculadora[i].resultado<<endl;
 				}
 				
 			}
@@ -295,12 +298,12 @@ int main(int argc, char** argv) {
 }
 
 void arquivarResultado(Calculadora *calculadora, ofstream &entrada){
-	if (calculadora->n1 == NULL)
+	if (calculadora->valor1 == NULL)
 	{
-		entrada << calculadora->operacao << calculadora->n2 << " = " << calculadora->resultado << "\n";
+		entrada << calculadora->operacao << calculadora->valor2 << " = " << calculadora->resultado << "\n";
 
 	} else {
-		entrada << calculadora->n1 << calculadora->operacao << calculadora->n2 << " = " << calculadora->resultado << "\n";
+		entrada << calculadora->valor1 << calculadora->operacao << calculadora->valor2 << " = " << calculadora->resultado << "\n";
 	}
 	
 }
