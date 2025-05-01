@@ -291,9 +291,13 @@ int main(int argc, char** argv) {
 	
 	entrada.close();
 	delete calculadora;
+	calculadora = nullptr;
 	delete historico;
+	historico = nullptr;
 	delete flag;
+	flag = nullptr;
 	delete operacao;
+	operacao = nullptr;
 	return 0;
 }
 
